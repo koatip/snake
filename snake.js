@@ -90,10 +90,6 @@ function printTable() {
     for (const part of snake) {
         ctx.fillRect(part.x, part.y, box, box);
     }
-
-    // head
-    ctx.fillStyle = 'yellow';
-    ctx.fillRect(snake[snake.lenght - 1].x, snake[snake.lenght - 1].y, box, box);
 }
 
 // -------------------------- Move snake, move!! -------------------------------
@@ -131,15 +127,13 @@ function moveSnake() {
         actDirection = directions[3];
     }
 
-
     let newHeadPosition = new Position(headOfSnake.x + actDirection[X], headOfSnake.y + actDirection[Y]);
-    let count = 4;
+    let count = 20;
     while (inBody(newHeadPosition) && count) {
         actDirection = directions[Math.floor(Math.random() * 4)];
         newHeadPosition = new Position(headOfSnake.x + actDirection[X], headOfSnake.y + actDirection[Y]);
         count--;
     }
-
 
     const eat = checkEating(newHeadPosition);
 
